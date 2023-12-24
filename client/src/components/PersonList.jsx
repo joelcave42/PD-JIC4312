@@ -2,12 +2,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import "../styles/PersonList.css";
+import { changeCurrentUpdatePerson, changeStatusListener } from "../features/globalValues/globalSlice";
+import { store } from "../store";
+import { useDispatch, useSelector } from "react-redux";
 
 const url = "http://localhost:3000/api/v1/people";
 
-const PersonList = ({ statusListener, setStatusListener }) => {
+const PersonList = ({  currentUpdatePerson, setCurrentUpdatePerson }) => {
 
   const [ people, setPeople ] = useState([]);
+  const { statusListener } = useSelector((state) => state.globalValues);
+
+  const dispatch = useDispatch();
+
 
   const fetchData = async () => {
     
@@ -24,11 +31,15 @@ const PersonList = ({ statusListener, setStatusListener }) => {
   const deletePerson = async(id) => {
     try {
       await axios.delete(`http://localhost:3000/api/v1/people/${id}`);
-      setStatusListener((currentStatusListener) => !currentStatusListener);
+      store.dispatch(changeStatusListener());
     } catch (error) {
       console.log(error); 
     }
 
+  }
+
+  const enterUpdateState = async (id) => {
+    store.dispatch(changeCurrentUpdatePerson(id));
   }
 
   useEffect(() => {
@@ -44,7 +55,7 @@ const PersonList = ({ statusListener, setStatusListener }) => {
         <p>{ item.email }</p>
         <div className="person-list-btn-div">
           <button onClick={() => deletePerson(item._id)}>Delete</button>
-          <button>Update</button>
+          <button onClick={() => enterUpdateState(item._id)}>Update</button>
         </div>
       </li>
         )) }

@@ -4,12 +4,12 @@ import { AddPerson, PersonList } from "./components";
 
 function App() {
 
-  const [ statusListener, setStatusListener ] = useState(false);
+  const [ currentUpdatePerson, setCurrentUpdatePerson ] = useState(0);
 
   return (
     <div className="container-main">
-      <AddPerson statusListener={statusListener} setStatusListener={setStatusListener} />
-      <PersonList statusListener={statusListener} setStatusListener={setStatusListener} />
+      <AddPerson currentUpdatePerson={currentUpdatePerson} setCurrentUpdatePerson={setCurrentUpdatePerson} />
+      <PersonList currentUpdatePerson={currentUpdatePerson} setCurrentUpdatePerson={setCurrentUpdatePerson} />
     </div>
   )
 }
