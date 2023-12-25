@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import "../styles/PersonList.css";
-import { changeCurrentUpdatePerson, changeStatusListener } from "../features/globalValues/globalSlice";
+import { changeCurrentUpdatePerson, changeStatusListener, updateEmailInputValue, updateNameInputValue, updatePasswordInputValue } from "../features/globalValues/globalSlice";
 import { store } from "../store";
 import { useDispatch, useSelector } from "react-redux";
+import {fetchPerson} from "../features/globalValues/globalSlice";
+
 
 const url = "http://localhost:3000/api/v1/people";
 
-const PersonList = ({  currentUpdatePerson, setCurrentUpdatePerson }) => {
+const PersonList = () => {
 
   const [ people, setPeople ] = useState([]);
   const { statusListener } = useSelector((state) => state.globalValues);
@@ -39,7 +41,14 @@ const PersonList = ({  currentUpdatePerson, setCurrentUpdatePerson }) => {
   }
 
   const enterUpdateState = async (id) => {
-    store.dispatch(changeCurrentUpdatePerson(id));
+    try{
+      const response = await axios(`http://localhost:3000/api/v1/people/${id}`);
+      const data = await response.data;
+      dispatch(fetchPerson(data));
+    }catch(error){
+      console.log(error);
+    }
+
   }
 
   useEffect(() => {
