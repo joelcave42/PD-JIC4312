@@ -31,3 +31,14 @@
     cursor: pointer;
     background-color: #6720a8;
 }
+
+@media(max-width: 725px){
+    .person-list-main {
+        width: 90%;
+    }
+
+    .person-list-main ul li {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+}

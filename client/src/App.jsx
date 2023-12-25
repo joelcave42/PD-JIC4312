@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AddPerson, PersonList } from "./components";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className="container-main">
       <AddPerson currentUpdatePerson={currentUpdatePerson} setCurrentUpdatePerson={setCurrentUpdatePerson} />
       <PersonList currentUpdatePerson={currentUpdatePerson} setCurrentUpdatePerson={setCurrentUpdatePerson} />
+      <ToastContainer position='top-center' />
     </div>
   )
 }

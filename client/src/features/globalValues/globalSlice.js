@@ -26,15 +26,12 @@ const globalSlice = createSlice({
       state.inputValues = { name: "", email: "", password: "" };
     },
     updateNameInputValue: (state, action) => {
-      console.log(action);
       state.inputValues.name = action.payload.name;
     },
     updateEmailInputValue: (state, action) => {
-      console.log(action);
       state.inputValues.email = action.payload.email;
     },
     updatePasswordInputValue: (state, action) => {
-      console.log(action);
       state.inputValues.password = action.payload.password;
     },
     changeStatusListener: (state) => {
@@ -44,23 +41,18 @@ const globalSlice = createSlice({
       state.currentUpdatePerson = action.payload.id;
     },
   },
-  
 
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPerson.pending, (state) => {
-      })
+      .addCase(fetchPerson.pending, (state) => {})
       .addCase(fetchPerson.fulfilled, (state, action) => {
-        console.log(action);
         state.currentUpdatePerson = action.payload.person._id;
-      state.inputValues.name = action.payload.person.name;
-      state.inputValues.email = action.payload.person.email;
-      state.inputValues.password = action.payload.person.password;
+        state.inputValues.name = action.payload.person.name;
+        state.inputValues.email = action.payload.person.email;
+        state.inputValues.password = action.payload.person.password;
       })
-      .addCase(fetchPerson.rejected, (state, action) => {
-        console.log(action);
-      })
-    }
+      .addCase(fetchPerson.rejected, (state, action) => {});
+  },
 });
 
 // console.log(cartSlice);

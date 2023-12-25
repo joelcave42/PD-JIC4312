@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import "../styles/PersonList.css";
-import { changeCurrentUpdatePerson, changeStatusListener, updateEmailInputValue, updateNameInputValue, updatePasswordInputValue } from "../features/globalValues/globalSlice";
+import { changeStatusListener } from "../features/globalValues/globalSlice";
 import { store } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import {fetchPerson} from "../features/globalValues/globalSlice";
+import { toast } from "react-toastify";
 
 
 const url = "http://localhost:3000/api/v1/people";
@@ -34,8 +35,9 @@ const PersonList = () => {
     try {
       await axios.delete(`http://localhost:3000/api/v1/people/${id}`);
       store.dispatch(changeStatusListener());
+      toast.success("Person successfully deleted");
     } catch (error) {
-      console.log(error); 
+      toast.error(error.message); 
     }
 
   }
@@ -46,7 +48,7 @@ const PersonList = () => {
       const data = await response.data;
       dispatch(fetchPerson(data));
     }catch(error){
-      console.log(error);
+      toast.error(error.message);
     }
 
   }

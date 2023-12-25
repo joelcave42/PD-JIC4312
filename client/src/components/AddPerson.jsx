@@ -3,6 +3,7 @@ import "../styles/AddPerson.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  changeCurrentUpdatePerson,
   changeStatusListener,
   resetInputValues,
   updateEmailInputValue,
@@ -10,24 +11,39 @@ import {
   updatePasswordInputValue,
 } from "../features/globalValues/globalSlice";
 import { store } from "../store";
+import { toast } from "react-toastify";
 
 const AddPerson = ({}) => {
-  const { inputValues, statusListener, currentUpdatePerson } = useSelector((state) => state.globalValues);
-
+  const { inputValues, currentUpdatePerson } = useSelector((state) => state.globalValues);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
-    const url = "http://localhost:3000/api/v1/people";
     e.preventDefault();
+    const url = "http://localhost:3000/api/v1/people";
+    if(currentUpdatePerson === 0){
+      try {
+        
+        const response = await axios.post(url, inputValues);
+        store.dispatch(changeStatusListener());
+        store.dispatch(resetInputValues());
+        toast.success("Person added to the application!");
+      } catch (error) {
+        toast.error(error.message);
+      }
+    }else{
+      try {
+        const response = await axios.patch(`http://localhost:3000/api/v1/people/${currentUpdatePerson}`, inputValues);
+        store.dispatch(changeCurrentUpdatePerson({id: 0}));
+        store.dispatch(resetInputValues());
+        toast.success("Person successfully updated! Please refresh to see the changes.");
+      } catch (error) {
+        toast.error(error.message);
+      }
 
-    try {
-      const response = await axios.post(url, inputValues);
-      store.dispatch(changeStatusListener());
-      store.dispatch(resetInputValues());
-    } catch (err) {
-      console.log(err.response);
     }
+    
   };
+
 
   return (
     <div className="add-person-main">
@@ -39,7 +55,7 @@ const AddPerson = ({}) => {
           name="name"
           placeholder="Enter person's name"
           value={inputValues.name}
-          onChange={(e) => dispatch(updateNameInputValue(e.target.value))}
+          onChange={(e) => dispatch(updateNameInputValue({ name: e.target.value}))}
         />
         <input
           className="form-input"
@@ -47,7 +63,7 @@ const AddPerson = ({}) => {
           name="email"
           placeholder="Enter person's email"
           value={inputValues.email}
-          onChange={(e) => dispatch(updateEmailInputValue(e.target.value))}
+          onChange={(e) => dispatch(updateEmailInputValue({ email: e.target.value }))}
         />
         <input
           className="form-input"
@@ -55,7 +71,7 @@ const AddPerson = ({}) => {
           name="password"
           placeholder="Enter person's password"
           value={inputValues.password}
-          onChange={(e) => dispatch(updatePasswordInputValue(e.target.value))}
+          onChange={(e) => dispatch(updatePasswordInputValue({ password: e.target.value }))}
         />
         {currentUpdatePerson === 0 ? (
           <input className="form-submit" type="submit" value="Add Person" />
