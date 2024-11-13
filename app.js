@@ -6,11 +6,13 @@ const app = express();
 const cors = require('cors');
 const connectDB = require("./db/connect");
 const peopleRouter = require("./routes/people");
+const faultsRouter = require("./routes/faults");
 
 app.use(express.json());
 app.use(cors());
 
 app.use("/api/v1", peopleRouter);
+app.use("/api/v1/faults", faultsRouter);
 
 
 

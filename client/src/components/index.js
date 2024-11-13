@@ -1,2 +1,2 @@
-export { default as AddPerson } from "./AddPerson";
-export { default as PersonList } from "./PersonList";
+export { default as FaultSubmissionForm } from "./FaultSubmissionForm";
+export { default as FaultList } from "./FaultList";
