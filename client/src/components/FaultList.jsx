@@ -24,6 +24,7 @@ const FaultList = () => {
 
   const deleteFault = async (id) => {
     try {
+      console.log("Deleting fault with ID:", id);
       await axios.delete(`http://localhost:3000/api/v1/faults/${id}`);
       store.dispatch(changeStatusListener());
       toast.success("Fault successfully deleted");

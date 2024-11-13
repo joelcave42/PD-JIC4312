@@ -48,17 +48,18 @@ const updateFault = async (req, res) => {
 };
 
 const deleteFault = async (req, res) => {
+    const { id: faultID } = req.params;
     try {
-        const { id: faultID } = req.params;
-        const fault = await Fault.findOneAndDelete({ _id: faultID });
+        const fault = await Fault.findByIdAndDelete(faultID);
         if (!fault) {
-            return res.status(404).json({ msg: `Fault with ID ${faultID} doesn't exist` });
+            return res.status(404).json({ msg: `No fault with id ${faultID} found` });
         }
-        res.status(200).json({ msg: "Fault deleted successfully" });
+        res.status(200).json({ msg: "Fault successfully deleted" });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ msg: `Error deleting fault: ${error.message}` });
     }
 };
+
 
 module.exports = {
     getAllFaults,
