@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/PersonList.css";
+import "../styles/FaultList.css";
 import { changeStatusListener } from "../features/globalValues/globalSlice";
 import { store } from "../store";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,26 +38,30 @@ const FaultList = () => {
   }, [statusListener]);
 
   return (
-    <div className="person-list-main">
+    <div className="fault-list-main">
       <h2>Fault Submissions</h2>
-      <ul>
+      <div className="fault-items"> {/* Changed from <ul> */}
         {faults.map((fault) => (
-          <li key={fault._id}>
-            <p>Vehicle ID: {fault.vehicleId}</p>
-            <p>Issues:</p>
-            <ul>
+          <div key={fault._id} className="fault-item">
+            <p className="vehicle-id">Vehicle ID: {fault.vehicleId}</p>
+            <p className="fault-issues">Issues:</p>
+            <ul className="issues-list">
               {fault.issues.map((issue, index) => (
-                <li key={index}>{issue}</li>
+                <li key={index} className="issue-item">
+                  {issue}
+                </li>
               ))}
             </ul>
-            <div className="person-list-btn-div">
-              <button onClick={() => deleteFault(fault._id)}>Delete</button>
+            <div className="fault-actions">
+              <button onClick={() => deleteFault(fault._id)} className="delete-btn">
+                Delete
+              </button>
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
-  );
+  );    
 };
 
 export default FaultList;

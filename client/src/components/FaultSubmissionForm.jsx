@@ -13,8 +13,6 @@ const FaultSubmissionForm = () => {
   const { inputValues } = useSelector((state) => state.globalValues);
   const dispatch = useDispatch();
 
-  // Predefined fault options for the 5988 vehicle form
-  // const predefinedFaults = ["Flat Tire", "Cracked Wheel", "Dead Battery", "Blown Transmission"];
   const faultGroups = [
     {
       title: "Tires and Wheels",
@@ -110,10 +108,9 @@ const FaultSubmissionForm = () => {
       ],
     },
   ];
-  
+
   const [selectedFaults, setSelectedFaults] = useState([]);
 
-  // Handle checkbox selection
   const handleCheckboxChange = (fault) => {
     setSelectedFaults((prevSelected) =>
       prevSelected.includes(fault)
@@ -129,7 +126,7 @@ const FaultSubmissionForm = () => {
       vehicleId: "A50", // Placeholder; replace with dynamic data if needed
       issues: selectedFaults,
     };
-    
+
     try {
       await axios.post(url, faultData);
       store.dispatch(changeStatusListener());
@@ -145,25 +142,27 @@ const FaultSubmissionForm = () => {
       <button className="back-button">Back</button>
       <div className="vehicle-id-box">Vehicle: A50</div>
       <form className="fault-submission-form" onSubmit={handleSubmit}>
-        <h1>PMCS Walkthrough</h1>
+        <h1 className="form-title">PMCS Walkthrough</h1>
         <div className="checkbox-group">
           {faultGroups.map((group, groupIndex) => (
             <div key={groupIndex} className="fault-group">
               <h3 className="group-title">{group.title}</h3>
-                {group.faults.map((fault, faultIndex) => (
-                  <label key={faultIndex} className="checkbox-label">
-                    <input
-                      type="checkbox"
-                      checked={selectedFaults.includes(fault)}
-                      onChange={() => handleCheckboxChange(fault)}
-                    />
+              {group.faults.map((fault, faultIndex) => (
+                <label key={faultIndex} className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={selectedFaults.includes(fault)}
+                    onChange={() => handleCheckboxChange(fault)}
+                  />
                   {fault}
                 </label>
               ))}
             </div>
           ))}
         </div>
-        <button type="submit" className="form-submit">Verify and Submit</button>
+        <button type="submit" className="form-submit">
+          Verify and Submit
+        </button>
       </form>
     </div>
   );
