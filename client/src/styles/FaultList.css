@@ -75,3 +75,27 @@ h2 {
 .delete-btn:hover {
   background: #e85a5a;
 }
+
+.toggle-fault-list-button {
+  background-color: #072e6d;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-fault-list-button:hover {
+  background-color: #072e6d;
+  transform: scale(1.05);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-fault-list-button:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
