@@ -48,20 +48,21 @@ Develop a web and mobile application that allows operators to log vehicle defici
 
 - Advanced Troubleshooting: Develop deeper integration for identifying parts and actions based on fault analysis.
 
-# Version 0.0.0 Release Notes
-## Features
+# Release Notes
+## Version 0.0.0 Release Notes
+### Features
 - MERN CRUD Operations: The core of this application, allowing for full management of database entries.
 - Interactive UI: A React-based front end that provides a responsive and engaging user experience.
 - Guided 5988 Form: The form that allows vehicle operators to log issues with their vehicles
 - Vehicle Issues Database: A skeleton database that stores the issues logged by operators
 
-## Application CRUD Operations
+### Application CRUD Operations
 - Create: Add new entries to the database.
 - Read: View all the entries in a user-friendly interface.
 - Update: Edit existing entries.
 - Delete: Remove unwanted entries.
 
-## Technologies Used
+### Technologies Used
 Frontend:
 - React.js: A JavaScript library for building user interfaces.
 - Redux Toolkit: Advanced state management for React applications.
@@ -72,7 +73,13 @@ Backend:
 - Express: Web application framework for Node.js.
 - MongoDB: NoSQL database for storing data.
 
-## Installation
+### Bug Fixes
+- None in this release
+
+### Known Issues
+- None in this release
+
+### Installation
 To run the app you need to have Node.js installed and follow these steps:
 1. Download the repository locally or clone it:
 
