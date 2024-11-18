@@ -13,11 +13,104 @@ const FaultSubmissionForm = () => {
   const { inputValues } = useSelector((state) => state.globalValues);
   const dispatch = useDispatch();
 
-  // Predefined fault options for the 5988 vehicle form
-  const predefinedFaults = ["Flat Tire", "Cracked Wheel", "Dead Battery", "Blown Transmission"];
+  const faultGroups = [
+    {
+      title: "Tires and Wheels",
+      faults: [
+        "Flat tire",
+        "Low tire pressure",
+        "Cracked wheel rim",
+        "Loose or missing lug nuts",
+        "Excessive tire wear or uneven tread wear",
+        "Damaged tire sidewall (cuts, bulges, or cracks)",
+      ],
+    },
+    {
+      title: "Engine and Transmission",
+      faults: [
+        "Low oil level",
+        "Oil leakage",
+        "Low coolant level",
+        "Coolant leakage",
+        "Dirty or clogged air filter",
+        "Engine overheating",
+        "Transmission fluid leakage",
+        "Difficulty shifting gears",
+      ],
+    },
+    {
+      title: "Electrical System",
+      faults: [
+        "Dead battery",
+        "Corroded battery terminals",
+        "Faulty alternator",
+        "Non-functional headlights or taillights",
+        "Broken or missing fuses",
+        "Non-functional dashboard indicators or gauges",
+      ],
+    },
+    {
+      title: "Brakes",
+      faults: [
+        "Low brake fluid level",
+        "Worn brake pads",
+        "Squeaking or grinding noises when braking",
+        "Brake fluid leakage",
+        "Inconsistent brake pedal pressure",
+        "Excessive travel in the brake pedal",
+      ],
+    },
+    {
+      title: "Steering and Suspension",
+      faults: [
+        "Loose or damaged steering linkage",
+        "Excessive play in the steering wheel",
+        "Damaged or leaking shock absorbers",
+        "Broken or damaged leaf springs",
+        "Uneven vehicle height (indicates suspension issues)",
+      ],
+    },
+    {
+      title: "Body and Chassis",
+      faults: [
+        "Cracked or damaged windshield",
+        "Loose or missing bolts on the body panels",
+        "Rust or corrosion on the chassis",
+        "Bent or damaged frame components",
+        "Doors not closing properly",
+      ],
+    },
+    {
+      title: "Fuel System",
+      faults: [
+        "Low fuel level",
+        "Fuel leakage",
+        "Clogged fuel filter",
+        "Difficulty starting due to fuel delivery issues",
+      ],
+    },
+    {
+      title: "Exhaust System",
+      faults: [
+        "Exhaust pipe leakage",
+        "Excessive smoke from the exhaust",
+        "Unusual exhaust noises",
+      ],
+    },
+    {
+      title: "Additional Items",
+      faults: [
+        "Missing or damaged fire extinguisher",
+        "Missing first aid kit",
+        "Missing or damaged Basic Issue Items (BII)",
+        "Loose or missing tow hooks",
+        "Faulty seat belts or restraints",
+      ],
+    },
+  ];
+
   const [selectedFaults, setSelectedFaults] = useState([]);
 
-  // Handle checkbox selection
   const handleCheckboxChange = (fault) => {
     setSelectedFaults((prevSelected) =>
       prevSelected.includes(fault)
@@ -33,7 +126,7 @@ const FaultSubmissionForm = () => {
       vehicleId: "A50", // Placeholder; replace with dynamic data if needed
       issues: selectedFaults,
     };
-    
+
     try {
       await axios.post(url, faultData);
       store.dispatch(changeStatusListener());
@@ -49,20 +142,27 @@ const FaultSubmissionForm = () => {
       <button className="back-button">Back</button>
       <div className="vehicle-id-box">Vehicle: A50</div>
       <form className="fault-submission-form" onSubmit={handleSubmit}>
-        <h2>Troubleshoot</h2>
+        <h1 className="form-title">PMCS Walkthrough</h1>
         <div className="checkbox-group">
-          {predefinedFaults.map((fault, index) => (
-            <label key={index} className="checkbox-label">
-              <input
-                type="checkbox"
-                checked={selectedFaults.includes(fault)}
-                onChange={() => handleCheckboxChange(fault)}
-              />
-              {fault}
-            </label>
+          {faultGroups.map((group, groupIndex) => (
+            <div key={groupIndex} className="fault-group">
+              <h3 className="group-title">{group.title}</h3>
+              {group.faults.map((fault, faultIndex) => (
+                <label key={faultIndex} className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={selectedFaults.includes(fault)}
+                    onChange={() => handleCheckboxChange(fault)}
+                  />
+                  {fault}
+                </label>
+              ))}
+            </div>
           ))}
         </div>
-        <button type="submit" className="form-submit">Verify and Submit</button>
+        <button type="submit" className="form-submit">
+          Verify and Submit
+        </button>
       </form>
     </div>
   );
