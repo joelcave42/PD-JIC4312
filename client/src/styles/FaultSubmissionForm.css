@@ -89,7 +89,7 @@
     padding: 15px;
     font-size: 18px;
     color: #fff;
-    background-color: #4caf50;
+    background-color: #20C997;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -98,6 +98,7 @@
   }
   
   .form-submit:hover {
-    background-color: #43a047;
+    transform: scale(1.025);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
   }
   

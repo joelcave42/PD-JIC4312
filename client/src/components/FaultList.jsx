@@ -51,7 +51,7 @@ const FaultList = () => {
       </div>
       {isVisible && (
         <div>
-          <h2>Fault Submissions</h2>
+          <h2>Fault Submissions:</h2>
           <div className="fault-items"> {}
             {faults.map((fault) => (
               <div key={fault._id} className="fault-item">

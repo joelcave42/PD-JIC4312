@@ -139,7 +139,6 @@ const FaultSubmissionForm = () => {
 
   return (
     <div className="fault-submission-main">
-      <button className="back-button">Back</button>
       <div className="vehicle-id-box">Vehicle: A50</div>
       <form className="fault-submission-form" onSubmit={handleSubmit}>
         <h1 className="form-title">PMCS Walkthrough</h1>

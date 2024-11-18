@@ -1,6 +1,6 @@
 .fault-list-main {
   padding: 20px;
-  max-width: 1200px; /* Increased max width for horizontal space */
+  max-width: 1200px;
   margin: auto;
   background: #f9f9f9;
   border-radius: 8px;
@@ -15,23 +15,18 @@ h2 {
 }
 
 .fault-items {
-  display: flex;
-  flex-wrap: wrap; /* Allows wrapping to the next line */
-  gap: 20px; /* Adds space between items */
-  justify-content: space-between; /* Spreads items across the row */
+  display: grid; /* Use grid layout for more control */
+  grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+  gap: 20px; /* Add consistent spacing between items */
 }
 
 .fault-item {
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  flex: 1 1 300px; /* Set a consistent width for items */
-  margin-bottom: 20px;
   padding: 15px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
-  max-width: 300px; /* Prevent items from stretching too wide */
 }
-
 
 .vehicle-id {
   font-size: 18px;
@@ -76,8 +71,13 @@ h2 {
   background: #e85a5a;
 }
 
+.toggle-fault-list-button-container {
+  text-align: center; /* Center align the button container */
+  margin-bottom: 20px;
+}
+
 .toggle-fault-list-button {
-  background-color: #072e6d;
+  background-color: #007BFF;
   color: white;
   border: none;
   padding: 12px 20px;
@@ -87,10 +87,10 @@ h2 {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: inline-block; /* Ensure the button doesn't stretch */
 }
 
 .toggle-fault-list-button:hover {
-  background-color: #072e6d;
   transform: scale(1.05);
   box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
 }
