@@ -1,19 +1,32 @@
-import { useState } from "react";
-import { FaultSubmissionForm, FaultList } from "./components";
-import { ToastContainer, toast } from 'react-toastify';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import FaultList from "./components/FaultList";
+import FaultSubmissionForm from "./components/FaultSubmissionForm";
+import LoginPage from "./components/LoginPage";
 
-
-function App() {
-  const [ currentUpdatePerson, setCurrentUpdatePerson ] = useState(0);
-
+const App = () => {
   return (
-    <div className="container-main">
-      <FaultSubmissionForm currentUpdatePerson={currentUpdatePerson} setCurrentUpdatePerson={setCurrentUpdatePerson} />
-      <FaultList currentUpdatePerson={currentUpdatePerson} setCurrentUpdatePerson={setCurrentUpdatePerson} />
-      <ToastContainer position='top-center' />
-    </div>
-  )
-}
+    <Router>
+      <Routes>
+        {/* Login Page */}
+        <Route path="/login" element={<LoginPage />} />
 
+        {/* Fault Management */}
+        <Route
+          path="/faults"
+          element={
+            <div>
+              <FaultSubmissionForm />
+              <FaultList />
+            </div>
+          }
+        />
 
-export default App
+        {/* Redirect any unknown route to the login */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
