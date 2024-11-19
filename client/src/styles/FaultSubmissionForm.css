@@ -27,7 +27,8 @@
   .vehicle-id-box {
     text-align: center;
     padding: 15px;
-    background-color: #ddd;
+    background-color: #3b3d3e;
+    color: #fff;
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 20px;
