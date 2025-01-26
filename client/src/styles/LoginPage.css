@@ -32,8 +32,8 @@
 button {
     width: 100%;
     padding: 10px;
-    background-color: #007BFF;
-    border: 10px;
+    background-color: #973c12;
+    border: none;
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -43,20 +43,3 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-
-.separator {
-    margin: 15px 0; /* Adds space around the "Or" */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    color: #666;
-  }
-  
-  .signup-button {
-    background-color: #17A2B8;
-  }
-  
-  .signup-button:hover {
-    background-color: #138496;
-  }

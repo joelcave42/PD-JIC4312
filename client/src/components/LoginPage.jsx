@@ -1,8 +1,6 @@
 // LoginPage.jsx
 import React, { useState } from 'react';
 import '../styles/LoginPage.css';
-import { Link } from "react-router-dom";
-
 
 function LoginPage({onLogin}) {
   const [username, setUsername] = useState('');
@@ -17,7 +15,7 @@ function LoginPage({onLogin}) {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
+      <h2>Hello! Please log in:</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
@@ -40,14 +38,8 @@ function LoginPage({onLogin}) {
             required
           />
         </div>
-        <button type="submit">Sign In</button>
+        <button type="submit">Sign in</button>
       </form>
-      <div className="separator">
-        <b>Or</b>
-      </div>
-      <Link to="/SignUpPage">
-      <button className="signup-button">Sign Up</button>
-      </Link>
     </div>
   );
 }
