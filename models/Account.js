@@ -1,27 +1,41 @@
-const bcrypt = require('bcryptjs');
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
-class Account {
-    constructor(username, password, accountType) {
-        this.username = username;
-        this.password = this.hashPassword(password);
-        this.accountType = accountType
+const AccountSchema = new mongoose.Schema({
+    username: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    accountType: {
+        type: String,
+        enum: ['clerk', 'maintainer', 'manager', 'operator', 'supervisor'],
+        required: true,
+    },
+});
 
+// Pre-save hook to hash password
+AccountSchema.pre("save", async function () {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+});
+
+// Method to verify password
+AccountSchema.methods.verifyPassword = async function (inputPassword) {
+    return await bcrypt.compare(inputPassword, this.password);
+};
+
+// Static method for supervisor to create a new user
+AccountSchema.statics.createUser = async function (supervisorId, userDetails) {
+    const supervisor = await this.findById(supervisorId);
+    if (!supervisor || supervisor.accountType !== 'supervisor') {
+        throw new Error('Only supervisors can create accounts');
     }
 
-
-    //creates salt based
-    hashPassword() {
-        const saltRounds = 10;
-        const salt = bcrypt.genSaltSync(saltRounds);
-        return bcrypt.hashSync(this.password.salt)
+    // Validate accountType if needed
+    if (userDetails.accountType === 'supervisor') {
+        throw new Error('Supervisors cannot create other supervisors');
     }
 
-    verifyPassword(inputPassword) {
-        return bcrypt.compareSync(inputPassword, this.password);
-    }
+    const newUser = new this(userDetails);
+    return await newUser.save();
+};
 
-
-
-}
-
-module.exports = Account;
+module.exports = mongoose.model("Account", AccountSchema);
