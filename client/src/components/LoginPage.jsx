@@ -1,6 +1,6 @@
-// LoginPage.jsx
 import React, { useState } from 'react';
 import '../styles/LoginPage.css';
+import armyimage from '../assets/armyimage.png';
 
 function LoginPage({onLogin}) {
   const [username, setUsername] = useState('');
@@ -15,6 +15,7 @@ function LoginPage({onLogin}) {
 
   return (
     <div className="login-container">
+        <img src={armyimage} alt="US Army Logo" className='army-logo'/>
       <h2>Hello! Please log in:</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
