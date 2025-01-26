@@ -1,5 +1,5 @@
-/* src/Login.css */
-.login-container {
+
+.signup-container {
     width: 300px;
     margin: 100px auto;
     padding: 30px;
@@ -9,10 +9,6 @@
     background-color: #f9f9f9;
 }
 
-.login-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
 
 .form-group {
     margin-bottom: 15px;
@@ -32,7 +28,7 @@
 button {
     width: 100%;
     padding: 10px;
-    background-color: #007BFF;
+    background-color: #17A2B8;
     border: 10px;
     color: white;
     font-size: 16px;
@@ -41,7 +37,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #138496;
 }
 
 .separator {
@@ -60,3 +56,25 @@ button:hover {
   .signup-button:hover {
     background-color: #138496;
   }
+
+  .back-button {
+    height: 50px;
+    width:250px;
+    position: fixed; /* Fixed positioning places it relative to the browser window */
+    top: 10px; /* Distance from the top of the browser window */
+    left: 10px; /* Distance from the left of the browser window */
+    background-color: #6C757D; /* Blue background */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 8px 12px; /* Padding for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 14px; /* Font size */
+    z-index: 1000; /* Ensures it appears above other content */
+  }
+  
+  .back-button:hover {
+    background-color: #5A6268; /* Darker blue on hover */
+  }
+  
+  
