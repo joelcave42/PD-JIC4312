@@ -1,57 +1,101 @@
+/* Login Container */
 .login-container {
-    width: 500px;
+    width: 400px;
     max-width: 90%;
-    margin: 60px auto;
-    padding: 90px 50px;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    box-shadow: 4px 4px 24px #aaa;
-    background-color: #f9f9f9;
-}
-
-.army-logo {
-    display: block;
-    margin: 0 auto 20px auto;
-    width: 120px;
-    height: auto;
-    position: relative;
-    top: -30px;
-}
-
-.login-container h2 {
+    padding: 40px;
+    border-radius: 10px;
+    /* Slightly lighter background so text and form fields stand out better */
+    background-color: #3b473b; 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
     text-align: center;
-    font-size: 36px;
-    margin-bottom: 30px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
+  }
+  
+  /* Logo */
+  .army-logo {
     display: block;
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-.form-group input {
+    margin: 0 auto 20px;
+    width: 80px;
+    height: auto;
+  }
+  
+  /* Heading */
+  .login-container h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffc317; /* Army gold */
+    margin-bottom: 25px;
+  }
+  
+  /* Form Labels */
+  .form-group label {
+    font-size: 15px;
+    display: block;
+    margin-bottom: 6px;
+    color: #ffc317; /* Match heading color for consistency */
+  }
+  
+  /* Input Fields */
+  .form-group input {
     width: 100%;
     padding: 12px;
-    box-sizing: border-box;
-    font-size: 20px;
-}
-
-button {
+    font-size: 15px;
+    background-color: #2a362a; /* Deeper Army green */
+    border: 1px solid #ffc317; /* Gold border */
+    color: #FFFFFF;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .form-group input::placeholder {
+    color: #aaaaaa;
+  }
+  
+  .form-group input:focus {
+    border-color: #ffffff; /* White on focus */
+    box-shadow: 0 0 6px #ffffff;
+    outline: none;
+  }
+  
+  /* Buttons */
+  button {
     width: 100%;
-    padding: 20px;
-    background-color: #973c12;
+    padding: 14px;
+    background-color: #ffc317; /* Gold button */
     border: none;
-    color: white;
-    font-size: 18px;
+    color: #2a362a; /* Dark green text */
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
     cursor: pointer;
-    border-radius: 7px;
-}
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  }
+  
+  button:hover {
+    background-color: #e6b813; /* Slightly darker gold */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+  
+  /* Links */
+  .login-container a {
+    color: #ffc317;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 15px;
+    display: inline-block;
+    transition: color 0.2s;
+  }
+  
+  .login-container a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
 
-button:hover {
-    background-color: #0c9522;
-}
+  .disclaimer {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    color: #dddddd; /* or a shade of your preference */
+  }
+  
+  

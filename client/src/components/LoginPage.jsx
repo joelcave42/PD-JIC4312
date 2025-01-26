@@ -2,45 +2,61 @@ import React, { useState } from 'react';
 import '../styles/LoginPage.css';
 import armyimage from '../assets/armyimage.png';
 
-function LoginPage({onLogin}) {
+function LoginPage({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Just for demo: logs credentials and calls onLogin()
     console.log('Username:', username);
     console.log('Password:', password);
     onLogin();
   };
 
   return (
-    <div className="login-container">
-        <img src={armyimage} alt="US Army Logo" className='army-logo'/>
-      <h2>Hello! Please log in:</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
+    <div className="centered-page">
+      <div className="login-container">
+        {/* Army Logo */}
+        <img src={armyimage} alt="U.S. Army Logo" className="army-logo" />
 
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Sign in</button>
-      </form>
+        {/* Main Heading */}
+        <h2>Log In</h2>
+
+        {/* Small, single-line disclaimer text */}
+        <p className="disclaimer">
+          For official use by authorized U.S. Army personnel only.
+        </p>
+
+        {/* Login Form */}
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              placeholder="Enter your username"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="Enter your password"
+            />
+          </div>
+
+          <button type="submit">Sign in</button>
+        </form>
+      </div>
     </div>
   );
 }
