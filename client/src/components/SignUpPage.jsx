@@ -14,7 +14,7 @@ function SignUpPage() {
     const newUser = { username, password, accountType };
 
     try {
-      const response = await fetch("http://localhost:5000/api/accounts", {
+      const response = await fetch("http://localhost:3000/api/v1/accounts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUser),
