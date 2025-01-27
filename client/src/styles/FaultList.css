@@ -2,36 +2,49 @@
   padding: 20px;
   max-width: 1200px;
   margin: auto;
-  background: #f9f9f9;
+  /* Dark Army green instead of pure #1E1E1E */
+  background: #232f23;
   border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  font-family: Arial, sans-serif;
 }
 
-h2 {
+.fault-list-main h2 {
   text-align: center;
   font-size: 24px;
   margin-bottom: 20px;
-  color: #333;
+  /* Use the same gold as in your login page: #ffc317 */
+  color: #ffc317;
 }
 
 .fault-items {
-  display: grid; /* Use grid layout for more control */
-  grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-  gap: 20px; /* Add consistent spacing between items */
+  display: grid;
+  /* 3 columns on large screens */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  
+  /* Collapses to 1 column on smaller screens */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .fault-item {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
+  /* Slightly softer dark green background than #2E2E2E */
+  background: #2a362a;
+  border: 1px solid #ffc317;
   border-radius: 8px;
   padding: 15px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .vehicle-id {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
+  /* Same gold color */
+  color: #ffc317;
 }
 
 .fault-issues {
@@ -47,8 +60,8 @@ h2 {
 }
 
 .issue-item {
-  margin-left: 10px;
   font-size: 14px;
+  line-height: 1.4;
 }
 
 .fault-actions {
@@ -58,27 +71,31 @@ h2 {
 }
 
 .delete-btn {
-  background: #ff6b6b;
-  color: white;
+  background: #ff6b6b; /* Red for delete */
+  color: #ffffff;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .delete-btn:hover {
   background: #e85a5a;
+  transform: translateY(-2px);
 }
 
+/* Toggle Fault List Button */
 .toggle-fault-list-button-container {
-  text-align: center; /* Center align the button container */
+  text-align: center;
   margin-bottom: 20px;
 }
 
 .toggle-fault-list-button {
-  background-color: #3b3d3e;
-  color: white;
+  background-color: #ffc317;
+  color: #2a362a; /* Dark green text for contrast */
   border: none;
   padding: 12px 20px;
   font-size: 16px;
@@ -86,16 +103,9 @@ h2 {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  display: inline-block; /* Ensure the button doesn't stretch */
 }
 
 .toggle-fault-list-button:hover {
   transform: scale(1.05);
-  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-.toggle-fault-list-button:active {
-  transform: scale(0.95);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #e6b813; /* Slightly darker gold */
 }

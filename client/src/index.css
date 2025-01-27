@@ -1,21 +1,38 @@
-*{
+/* index.css */
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: aliceblue;
-}
-
-.container-main{
-    max-width: 1280px;
-    margin: auto;
-
+  }
+  
+  /* General Styles */
+  body {
+    font-family: Arial, sans-serif;
+    /* Keep the gradient, but remove flex properties and fixed height: */
+    background: linear-gradient(135deg, #2a362a 0%, #000000 100%);
+    color: #FFFFFF;
+    /* Allow body to expand with content: */
+    min-height: 100vh;
+  }
+  
+  /* Use a wrapper or container for centering if needed */
+  .centered-page {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* If you want it to fill at least the viewport height: */
+    min-height: 100vh;
+  }
+  
+  /* Container main can remain if you're using it for layout */
+  .container-main {
+    max-width: 1280px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
     row-gap: 20px;
-}
+    /* Removed “justify-content: center; align-items: center;” 
+       so it doesn't force the container to the vertical center */
+  }
+  
