@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/LoginPage.css';
 import armyimage from '../assets/armyimage.png';
+import armyImageWhite from '../assets/armyImageWhite.png';
 
 function LoginPage({ onLogin }) {
   const [username, setUsername] = useState('');
@@ -18,20 +19,20 @@ function LoginPage({ onLogin }) {
     <div className="centered-page">
       <div className="login-container">
         {/* Army Logo */}
-        <img src={armyimage} alt="U.S. Army Logo" className="army-logo" />
+        <img src={armyImageWhite} alt="U.S. Army Logo" className="army-logo" />
 
         {/* Main Heading */}
         <h2>Log In</h2>
 
         {/* Small, single-line disclaimer text */}
         <p className="disclaimer">
-          For official use by authorized U.S. Army personnel only.
+          For official use by authorized U.S. Army personnel.
         </p>
 
         {/* Login Form */}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="username">Username</label>
             <input
               type="text"
               id="username"
@@ -43,7 +44,7 @@ function LoginPage({ onLogin }) {
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"

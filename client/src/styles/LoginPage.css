@@ -8,34 +8,48 @@
     background-color: #3b473b; 
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
     text-align: center;
-  }
+}
   
-  /* Logo */
-  .army-logo {
+/* Logo */
+.army-logo {
     display: block;
     margin: 0 auto 20px;
     width: 80px;
     height: auto;
-  }
+}
   
-  /* Heading */
-  .login-container h2 {
+/* Heading */
+.login-container h2 {
     font-size: 26px;
     font-weight: bold;
     color: #ffc317; /* Army gold */
-    margin-bottom: 25px;
-  }
+    margin-bottom: 20px; /* Adjusted spacing below the heading */
+}
   
-  /* Form Labels */
-  .form-group label {
+/* Disclaimer Text */
+.disclaimer {
+    font-size: 0.85rem;
+    margin-top: 10px; /* Added spacing above the disclaimer */
+    margin-bottom: 20px; /* Added spacing below the disclaimer */
+    color: #dddddd; /* or a shade of your preference */
+    text-align: center;
+}
+
+/* Form Labels */
+.form-group {
+    text-align: left; /* Align labels and inputs to the left */
+    margin-bottom: 20px; /* Ensure consistent spacing between fields */
+}
+
+.form-group label {
     font-size: 15px;
     display: block;
     margin-bottom: 6px;
     color: #ffc317; /* Match heading color for consistency */
-  }
+}
   
-  /* Input Fields */
-  .form-group input {
+/* Input Fields */
+.form-group input {
     width: 100%;
     padding: 12px;
     font-size: 15px;
@@ -43,22 +57,16 @@
     border: 1px solid #ffc317; /* Gold border */
     color: #FFFFFF;
     border-radius: 4px;
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* Adjusted to even out spacing */
     transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  
-  .form-group input::placeholder {
+}
+
+.form-group input::placeholder {
     color: #aaaaaa;
-  }
+}
   
-  .form-group input:focus {
-    border-color: #ffffff; /* White on focus */
-    box-shadow: 0 0 6px #ffffff;
-    outline: none;
-  }
-  
-  /* Buttons */
-  button {
+/* Buttons */
+button {
     width: 100%;
     padding: 14px;
     background-color: #ffc317; /* Gold button */
@@ -68,34 +76,27 @@
     font-weight: bold;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 20px; /* Added space above the button */
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-  }
+}
   
-  button:hover {
+button:hover {
     background-color: #e6b813; /* Slightly darker gold */
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
-  
-  /* Links */
-  .login-container a {
+}
+
+/* Links */
+.login-container a {
     color: #ffc317;
     text-decoration: none;
     font-size: 14px;
     margin-top: 15px;
     display: inline-block;
     transition: color 0.2s;
-  }
-  
-  .login-container a:hover {
+}
+
+.login-container a:hover {
     color: #ffffff;
     text-decoration: underline;
-  }
-
-  .disclaimer {
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-    color: #dddddd; /* or a shade of your preference */
-  }
-  
-  
+}
