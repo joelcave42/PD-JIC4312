@@ -1,4 +1,4 @@
-# Simple MERN Stack CRUD Application
+# Army Vehicle Maintenance Application
 
 
 Welcome to this comprehensive MERN CRUD project, a full-stack web application meticulously crafted using the robust MERN stack (MongoDB, Express, React, Node.js). This repository is a treasure trove of learning and development that not only serves as a MERN application
@@ -49,7 +49,6 @@ Develop a web and mobile application that allows operators to log vehicle defici
 
 # Release Notes
 ## Version 0.1.0 Release Notes
-Product Name: Army Vehicle Maintenance Application
 
 ### New Features
 - Implemented a User Interface to allow users (operators, maintainers, supervisors, etc.) to log in
