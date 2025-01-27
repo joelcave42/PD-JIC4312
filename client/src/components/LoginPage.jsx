@@ -7,12 +7,30 @@ import { Link } from "react-router-dom";
 function LoginPage({onLogin}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Username:', username);
-    console.log('Password:', password);
-    onLogin();
+    try {
+        const reponse = await fetch("api/v1/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password }),
+            credentials: "include",
+        });
+
+        if (!response.ok) {
+            throw new Error("Invalid username or password");
+        }
+        
+        onLogin();
+    } catch (err) {
+        setError(err.message);
+    }
   };
 
   return (

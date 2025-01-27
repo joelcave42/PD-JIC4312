@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const { createAccount, createAccountAsSupervisor, getAccounts } = require("../controllers/accounts");
+const { isAuthenticated, isSupervisor } = require("../middleware/authMiddleware");
 
-// Routes without authentication middleware
+// Routes with authentication and authorization middleware
 router.route("/")
-    .post(createAccount) // General account creation
-    .get(getAccounts);   // Get all accounts
+    .post(isAuthenticated, createAccount) // Only authenticated users can create accounts
+    .get(isAuthenticated, getAccounts);   // Only authenticated users can fetch all accounts
 
 router.route("/supervisor")
-    .post(createAccountAsSupervisor); // Supervisor-specific route for account creation
+    .post(isAuthenticated, isSupervisor, createAccountAsSupervisor); // Only supervisors can create accounts via this route
 
 module.exports = router;
