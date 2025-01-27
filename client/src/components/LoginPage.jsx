@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import '../styles/LoginPage.css';
 import armyimage from '../assets/armyimage.png';
 import armyImageWhite from '../assets/armyImageWhite.png';
@@ -9,6 +10,8 @@ function LoginPage({ onLogin }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -83,6 +86,19 @@ function LoginPage({ onLogin }) {
             {loading ? 'Logging in...' : 'Sign in'}
           </button>
         </form>
+
+        {/* Sign Up Link */}
+        <p
+          style={{
+            marginTop: '20px',
+            color: '#ffc317',
+            cursor: 'pointer',
+            textAlign: 'center',
+          }}
+          onClick={() => navigate('/signup')}
+        >
+          Don't have an account? Sign up here.
+        </p>
       </div>
     </div>
   );
