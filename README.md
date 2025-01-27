@@ -126,3 +126,7 @@ node app.js
 cd client
 npm run dev
 ```
+
+## Version 0.1.0 Release Notes
+Testing
+
