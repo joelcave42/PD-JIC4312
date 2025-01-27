@@ -2,17 +2,37 @@ import React, { useState } from 'react';
 import '../styles/LoginPage.css';
 import armyimage from '../assets/armyimage.png';
 import armyImageWhite from '../assets/armyImageWhite.png';
+import axios from 'axios';
 
 function LoginPage({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Just for demo: logs credentials and calls onLogin()
-    console.log('Username:', username);
-    console.log('Password:', password);
-    onLogin();
+    setError(''); // Clear previous errors
+    setLoading(true); // Indicate loading
+
+    try {
+      // Make API call to backend
+      const response = await axios.post('http://localhost:3000/api/v1/accounts/login', {
+        username,
+        password,
+      });
+
+      // Handle success
+      if (response.data.success) {
+        console.log('Login successful:', response.data);
+        onLogin(response.data); // Pass the logged-in user data to parent component
+      }
+    } catch (err) {
+      // Handle errors
+      setError(err.response?.data?.message || 'An error occurred. Please try again.');
+    } finally {
+      setLoading(false); // Stop loading
+    }
   };
 
   return (
@@ -55,7 +75,13 @@ function LoginPage({ onLogin }) {
             />
           </div>
 
-          <button type="submit">Sign in</button>
+          {/* Error Message */}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+
+          {/* Submit Button */}
+          <button type="submit" disabled={loading}>
+            {loading ? 'Logging in...' : 'Sign in'}
+          </button>
         </form>
       </div>
     </div>
