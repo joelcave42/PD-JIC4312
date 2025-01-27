@@ -51,14 +51,14 @@ Develop a web and mobile application that allows operators to log vehicle defici
 ## Version 0.1.0 Release Notes
 Product Name: Army Vehicle Maintenance Application
 
-# New Features
+### New Features
 - Implemented a User Interface to allow users (operators, maintainers, supervisors, etc.) to log in
 - Refined the 5988 form to allow vehicle operators to submit faults with vehicles
 - Implemented the ability for anybody to create an account
 - Database has been setup to store the login information via MongoDB
 - Login button is able to verify correct credentials with database
 
-# Bug Fixes
+### Bug Fixes
 - Fixed bug of the option to view previously submitted 5988 not displaying underneath the 5988 form
 
 
