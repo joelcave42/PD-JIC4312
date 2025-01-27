@@ -48,6 +48,10 @@ Develop a web and mobile application that allows operators to log vehicle defici
 - Advanced Troubleshooting: Develop deeper integration for identifying parts and actions based on fault analysis.
 
 # Release Notes
+## Version 0.1.0 Release Notes
+Testing
+
+
 ## Version 0.0.0 Release Notes
 ### Features
 - MERN CRUD Operations: The core of this application, allowing for full management of database entries.
@@ -126,7 +130,4 @@ node app.js
 cd client
 npm run dev
 ```
-
-## Version 0.1.0 Release Notes
-Testing
 
