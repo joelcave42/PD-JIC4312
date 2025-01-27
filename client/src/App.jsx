@@ -5,10 +5,10 @@ import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
 import FaultSubmissionForm from "./components/FaultSubmissionForm";
 import FaultList from "./components/FaultList";
-
+ 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+ 
   // Load login state from localStorage when the app starts
   useEffect(() => {
     const storedLoginState = localStorage.getItem("isLoggedIn");
@@ -16,22 +16,22 @@ function App() {
       setIsLoggedIn(true);
     }
   }, []);
-
+ 
   const handleLogin = () => {
     setIsLoggedIn(true);
     localStorage.setItem("isLoggedIn", "true"); // Save login state
   };
-
+ 
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("isLoggedIn"); // Remove login state
   };
-
+ 
   return (
     <Router>
       <div className="container-main">
         <ToastContainer position="top-center" />
-
+ 
         <Routes>
           {/* Public Routes */}
           <Route
@@ -39,19 +39,26 @@ function App() {
             element={isLoggedIn ? <Navigate to="/fault-submission" /> : <LoginPage onLogin={handleLogin} />}
           />
           <Route path="/signup" element={<SignUpPage />} />
-
+ 
           {/* Protected Routes */}
           {isLoggedIn ? (
             <>
-              <Route path="/fault-submission" element={<FaultSubmissionForm />} />
-              <Route path="/fault-list" element={<FaultList />} />
+              <Route
+                path="/fault-submission"
+                element={
+                  <>
+                    <FaultSubmissionForm />
+                    <FaultList /> {/* Include FaultList here */}
+                  </>
+                }
+              />
             </>
           ) : (
             // Redirect to login if not logged in
             <Route path="*" element={<Navigate to="/" />} />
           )}
         </Routes>
-
+ 
         {/* Logout Button */}
         {isLoggedIn && (
           <div
@@ -81,5 +88,5 @@ function App() {
     </Router>
   );
 }
-
+ 
 export default App;
