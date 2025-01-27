@@ -1,9 +1,3 @@
-# Army Vehicle Maintenance Application
-
-
-Welcome to this comprehensive MERN CRUD project, a full-stack web application meticulously crafted using the robust MERN stack (MongoDB, Express, React, Node.js). This repository is a treasure trove of learning and development that not only serves as a MERN application
-example but also provides a step-by-step MERN CRUD app tutorial.
-
 # Group 4312 U.S. Army Equipment Maintenance Intake System Project Overview
 The U.S. Army currently relies on a manual, paperwork-based process to conduct vehicle and equipment maintenance tasks, particularly for operator-level checks and troubleshooting. This process is inefficient, prone to data loss, and lacks visibility and traceability throughout the maintenance workflow. Operators need a more streamlined and accurate method to report vehicle deficiencies and initiate maintenance actions, which are currently not facilitated by any digital intake platform, while leaders need oversight of the process to identify gaps and inefficiencies contributing to readiness deficiencies. Project Objectives
 
