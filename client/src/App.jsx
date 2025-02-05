@@ -5,61 +5,62 @@ import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
 import FaultSubmissionForm from "./components/FaultSubmissionForm";
 import FaultList from "./components/FaultList";
- 
+import HomeScreen from "./components/HomeScreen";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
- 
-  // Load login state from localStorage when the app starts
+
   useEffect(() => {
     const storedLoginState = localStorage.getItem("isLoggedIn");
     if (storedLoginState === "true") {
       setIsLoggedIn(true);
     }
   }, []);
- 
+
   const handleLogin = () => {
     setIsLoggedIn(true);
-    localStorage.setItem("isLoggedIn", "true"); // Save login state
+    localStorage.setItem("isLoggedIn", "true");
   };
- 
+
   const handleLogout = () => {
     setIsLoggedIn(false);
-    localStorage.removeItem("isLoggedIn"); // Remove login state
+    localStorage.removeItem("isLoggedIn");
   };
- 
+
   return (
     <Router>
       <div className="container-main">
         <ToastContainer position="top-center" />
- 
+
         <Routes>
-          {/* Public Routes */}
+          {}
           <Route
             path="/"
-            element={isLoggedIn ? <Navigate to="/fault-submission" /> : <LoginPage onLogin={handleLogin} />}
+            element={
+              isLoggedIn ? (
+                <Navigate to="/home" replace />
+              ) : (
+                <LoginPage onLogin={handleLogin} />
+              )
+            }
           />
           <Route path="/signup" element={<SignUpPage />} />
- 
-          {/* Protected Routes */}
+
+          {}
           {isLoggedIn ? (
             <>
-              <Route
-                path="/fault-submission"
-                element={
-                  <>
-                    <FaultSubmissionForm />
-                    <FaultList /> {/* Include FaultList here */}
-                  </>
-                }
-              />
+              <Route path="/home" element={<HomeScreen />} />
+              <Route path="/fault-submission" element={<FaultSubmissionForm />} />
+              <Route path="/fault-list" element={<FaultList />} />
+              {}
+              <Route path="*" element={<Navigate to="/home" replace />} />
             </>
           ) : (
-            // Redirect to login if not logged in
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           )}
         </Routes>
- 
-        {/* Logout Button */}
+
+        {}
         {isLoggedIn && (
           <div
             style={{
@@ -88,5 +89,5 @@ function App() {
     </Router>
   );
 }
- 
+
 export default App;

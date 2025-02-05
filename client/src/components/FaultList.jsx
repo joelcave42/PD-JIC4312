@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/FaultList.css";
 import { changeStatusListener } from "../features/globalValues/globalSlice";
@@ -9,6 +10,7 @@ import { toast } from "react-toastify";
 const url = "http://localhost:3000/api/v1/faults"; // Updated URL to fetch faults data
 
 const FaultList = () => {
+  const navigate = useNavigate()
   const [faults, setFaults] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const { statusListener } = useSelector((state) => state.globalValues);
@@ -44,6 +46,7 @@ const FaultList = () => {
 
   return (
     <div className="fault-list-main">
+      <button className="back-button" onClick={() => navigate("/home")}>Back</button>
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
         <button onClick={buttonClick} className="toggle-fault-list-button">
           {isVisible ? "Hide Fault Submissions" : "Show Fault Submissions"}
